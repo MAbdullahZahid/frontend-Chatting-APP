@@ -211,13 +211,13 @@ const ChatPage = () => {
           </div>
           <div>
             <h3>{chatPartner.name || "..."}</h3>
-            <p className="status">
+            {/* <p className="status">
               {isOnline ? (
                 <span className="online">Online</span>
               ) : (
                 <span className="offline">Offline</span>
               )}
-            </p>
+            </p> */}
           </div>
         </div>
         <button className="logout-button" onClick={logout}>

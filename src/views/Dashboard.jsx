@@ -52,6 +52,7 @@ const Dashboard = () => {
 
   return () => {
     socket?.off("userStatusUpdate", handleStatusUpdate);
+    socket?.off("userStatusUpdate", handleStatusUpdate);
   };
 }, [socket]);
 

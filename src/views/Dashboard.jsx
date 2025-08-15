@@ -62,8 +62,8 @@ const Dashboard = () => {
 
     axios.get(`${BackendURL}/api/contacts/${userId}`)
       .then((res) => {
-        if (Array.isArray(res.data)) {
-          setAllContacts(res.data);
+        if (Array.isArray(res?.data)) {
+          setAllContacts(res?.data);
         }
       })
       .catch(console.error);
@@ -75,7 +75,7 @@ const Dashboard = () => {
 
     axios.get(`${BackendURL}/api/chats/contacts/${userId}`)
       .then((res) => {
-        if (Array.isArray(res.data)) {
+        if (Array.isArray(res?.data)) {
           const contactsWithStatus = res.data.map(contact => ({
   ...contact,
   status: "offline",

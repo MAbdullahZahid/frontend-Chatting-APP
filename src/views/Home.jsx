@@ -333,12 +333,12 @@ export default function Home() {
     padding: 20px 0;
     color: #6b7280;
     font-size: 14px;
-    margin-top: 40px;
+    margin-top: 20px;
   }
 
   @media (max-width: 480px) {
     .footer {
-      margin-top: 20px;
+      margin-top: 10px;
     }
   }
 

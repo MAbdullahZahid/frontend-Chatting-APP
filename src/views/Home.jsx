@@ -208,7 +208,7 @@ export default function Home() {
           flex-shrink: 0;
         }
            .author {
-            color: #1f2937;
+            color: #4F46E5;
             font-size: 1rem;
             font-weight: 600;
            

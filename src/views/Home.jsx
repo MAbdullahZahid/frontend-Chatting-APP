@@ -75,7 +75,8 @@ export default function Home() {
           <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M8 10H8.01M12 10H12.01M16 10H16.01M9 16H5C3.89543 16 3 15.1046 3 14V6C3 4.89543 3.89543 4 5 4H19C20.1046 4 21 4.89543 21 6V14C21 15.1046 20.1046 16 19 16H14L9 21V16Z" stroke="#4F46E5" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
           </svg>
-          <h1>Welcome to ChatApp</h1>
+        <h1>Welcome to TalkZone</h1>
+        <p class="author">by Abdullah Zahid</p>
         </div>
 
         {error && (
@@ -200,6 +201,12 @@ export default function Home() {
           width: 20px;
           height: 20px;
           flex-shrink: 0;
+        }
+           .author {
+            color: #1f2937;
+            font-size: 1.1rem;
+            font-weight: 600;
+           
         }
 
         .login-form {

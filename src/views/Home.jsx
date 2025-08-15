@@ -140,9 +140,13 @@ export default function Home() {
         >
           Create new account
         </button>
-
+ <footer className="footer">
+        <p>© {new Date().getFullYear()} TalkZone. All rights reserved by Abdullah Zahid</p>
+      </footer>
       
       </div>
+
+     
 
       <style jsx>{`
         .login-container {
@@ -321,6 +325,21 @@ export default function Home() {
           background-color: #f5f5ff;
           border-color: #c7d2fe;
         }
+
+        .footer {
+    width: 100%;
+    text-align: center;
+    padding: 20px 0;
+    color: #6b7280;
+    font-size: 14px;
+    margin-top: 40px;
+  }
+
+  @media (max-width: 480px) {
+    .footer {
+      margin-top: 20px;
+    }
+  }
 
         @media (max-width: 480px) {
           .login-card {

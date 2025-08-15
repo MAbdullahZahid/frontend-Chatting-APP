@@ -4,6 +4,7 @@ import io from "socket.io-client";
 import Swal from "sweetalert2";
 
 const AuthContext = createContext();
+const BackendURL = import.meta.env.VITE_BACKEND_BASE_URL;
 
 export const AuthProvider = ({ children }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -84,7 +85,7 @@ export const AuthProvider = ({ children }) => {
   // Connect to WebSocket when logged in
 useEffect(() => {
   if (isAuthenticated && userId) {
-    socketRef.current = io("http://localhost:5000");
+   socketRef.current = io(`${BackendURL}/`);
 
     const socket = socketRef.current;
 

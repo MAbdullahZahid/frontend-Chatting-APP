@@ -141,7 +141,8 @@ export default function Home() {
           Create new account
         </button>
  <footer className="footer">
-        <p>© {new Date().getFullYear()} TalkZone. All rights reserved by Abdullah Zahid</p>
+        <p>© {new Date().getFullYear()} TalkZone. <br />
+          All rights reserved by Abdullah Zahid</p>
       </footer>
       
       </div>

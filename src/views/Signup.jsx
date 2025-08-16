@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 const BackendURL = import.meta.env.VITE_BACKEND_BASE_URL;
+import { useNavigate } from "react-router-dom";
 export default function Signup() {
   const [formData, setFormData] = useState({
     name: "",
@@ -11,7 +12,9 @@ export default function Signup() {
   });
 
   const [error, setError] = useState("");
+    const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
+  const [success, setSuccess] = useState(false);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -54,8 +57,22 @@ export default function Signup() {
         headers: { "Content-Type": "application/json" }
       });
 
-      alert("Signup successful! You can now login.");
-      window.close();
+      // Clear form
+      setFormData({
+        name: "",
+        username: "",
+        password: "",
+        phoneNo: "",
+        about: ""
+      });
+      
+      // Show success message
+      setSuccess(true);
+      
+      // Redirect after 3 seconds
+      setTimeout(() => {
+        navigate(`/auth/login`);
+      }, 2000);
     } catch (err) {
       if (err.response) {
         setError(err.response.data.message || "Signup failed");
@@ -78,6 +95,15 @@ export default function Signup() {
               <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clipRule="evenodd" />
             </svg>
             <p>{error}</p>
+          </div>
+        )}
+
+        {success && (
+          <div className="success-message">
+            <svg className="success-icon" viewBox="0 0 20 20" fill="currentColor">
+              <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+            </svg>
+            <p>Signup successful! Redirecting to login page...</p>
           </div>
         )}
 
@@ -146,7 +172,7 @@ export default function Signup() {
 
           <button
             type="submit"
-            disabled={loading}
+            disabled={loading || success}
             className={loading ? "submit-btn loading" : "submit-btn"}
           >
             {loading ? (
@@ -199,16 +225,39 @@ export default function Signup() {
           border-radius: 4px;
         }
 
-        .error-icon {
+        .success-message {
+          background-color: #f0fdf4;
+          border-left: 4px solid #10b981;
+          padding: 12px;
+          margin-bottom: 20px;
+          display: flex;
+          align-items: center;
+          border-radius: 4px;
+        }
+
+        .error-icon, .success-icon {
           width: 20px;
           height: 20px;
-          color: #ef4444;
           margin-right: 10px;
           flex-shrink: 0;
         }
 
+        .error-icon {
+          color: #ef4444;
+        }
+
+        .success-icon {
+          color: #10b981;
+        }
+
         .error-message p {
           color: #b91c1c;
+          font-size: 14px;
+          margin: 0;
+        }
+
+        .success-message p {
+          color: #065f46;
           font-size: 14px;
           margin: 0;
         }
